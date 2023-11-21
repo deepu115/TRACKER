@@ -1,7 +1,7 @@
 import express from 'express';
 import { config } from 'dotenv';
 import mongoose from 'mongoose';
-import userRoutes from './routes/userRoutes';
+import userRoutes from './routes/userRoutes.js';
 
 config({ path: `.env.${process.env.NODE_ENV}` });
 

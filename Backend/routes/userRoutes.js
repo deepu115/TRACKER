@@ -1,8 +1,8 @@
 import express from 'express';
 import { signup, login, refreshAccessToken } from '../controllers/userController.js';
 import { protect } from '../middleware/authMiddleware.js';
-import { userSignupValidationRules, userLoginValidationRules, validate } from '../validation/userValidation.js';
-
+import { userSignupValidationRules, userLoginValidationRules, validate } from '../middleware/userValidation.js';
+import User from '../models/user.js';
 const router = express.Router();
 
 router.post('/signup', userSignupValidationRules(), validate, signup);
@@ -17,6 +17,7 @@ router.get('/profile', protect, async (req, res) => {
             res.status(404).send('User not found');
         }
     } catch (error) {
+        console.log(error)
         res.status(500).send('Server error');
     }
 });
