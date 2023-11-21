@@ -1,18 +1,15 @@
 import express from 'express';
 import { config } from 'dotenv';
 import mongoose from 'mongoose';
+import cors from 'cors';
 import userRoutes from './routes/userRoutes.js';
+import foodRoutes from './routes/foodRoutes.js';
 
 config({ path: `.env.${process.env.NODE_ENV}` });
 
 const app = express();
 
-// app.use(cors({
-//     origin: 'https://chitter-zbe7.onrender.com',
-//     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-//     allowedHeaders: ['Content-Type', 'Authorization', 'x-auth-token'],
-//     credentials: true
-// }));
+app.use(cors());
 app.use(express.json());
 
 
@@ -22,6 +19,7 @@ mongoose.connect(process.env.MONGO_URI)
 
 
 app.use('/api/users', userRoutes);
+app.use('/api/foods', foodRoutes);
 app.use((err, req, res, next) => {
     res.status(400).json({ msg: err.message });
 });
