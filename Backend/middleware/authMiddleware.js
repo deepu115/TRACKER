@@ -1,4 +1,7 @@
 import jwt from 'jsonwebtoken';
+import { config } from 'dotenv'
+
+config({ path: `.env.${process.env.NODE_ENV}` });
 
 export const protect = (req, res, next) => {
     let token;
