@@ -1,5 +1,8 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import { config } from 'dotenv'
+
+config({ path: `.env.${process.env.NODE_ENV}` });
 
 const saltRounds = 10;
 const accessTokenExpiry = '15m'; // Short-lived access token
