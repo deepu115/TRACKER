@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import userRoutes from './routes/userRoutes.js';
 import foodRoutes from './routes/foodRoutes.js';
+import nutritionLogRoutes from './routes/nutritionLogRoutes.js';
 
 config({ path: `.env.${process.env.NODE_ENV}` });
 
@@ -20,6 +21,7 @@ mongoose.connect(process.env.MONGO_URI)
 
 app.use('/api/users', userRoutes);
 app.use('/api/foods', foodRoutes);
+app.use('/api/nutritionLogs', nutritionLogRoutes);
 app.use((err, req, res, next) => {
     res.status(400).json({ msg: err.message });
 });
