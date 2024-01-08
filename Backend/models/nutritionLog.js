@@ -13,7 +13,7 @@ const nutrientInfoSchema = new mongoose.Schema({
 
 const foodItemEntrySchema = new mongoose.Schema({
     foodItem: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'FoodItem',
         required: true
     },
@@ -56,7 +56,7 @@ const nutritionLogSchema = new mongoose.Schema({
         default: Date.now
     },
     user: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true
     },

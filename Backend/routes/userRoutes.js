@@ -3,7 +3,6 @@ import { signup, login, refreshAccessToken } from '../controllers/userController
 import { protect } from '../middleware/authMiddleware.js';
 import { userSignupValidationRules, userLoginValidationRules, validate } from '../middleware/userValidation.js';
 import { getUserProfile, updateUserProfile } from '../controllers/userProfileController.js';
-import User from '../models/user.js';
 const router = express.Router();
 
 router.post('/signup', userSignupValidationRules(), validate, signup);

@@ -7,16 +7,14 @@ const foodItemSchema = new mongoose.Schema({
         trim: true
     },
     servingSize: {
-        type: String,
-        required: true
+        type: String
     },
     servingsPerContainer: {
         type: Number,
         required: true
     },
     calories: {
-        type: Number,
-        required: true
+        type: Number
     },
     totalFat: {
         amount: Number,
@@ -53,15 +51,18 @@ const foodItemSchema = new mongoose.Schema({
         amount: Number,
         dvPercentage: Number
     },
-    vitamins: [{
-        name: String,
-        amount: Number,
-        dvPercentage: Number
-    }],
+    // Additional fields from Nutritionix, if needed
+    brandName: String,
+    servingWeightGrams: Number,
+    photoUrl: String,
+    createdBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    }
 }, {
     timestamps: true
 });
 
 const FoodItem = mongoose.model('FoodItem', foodItemSchema);
-
 export default FoodItem;
